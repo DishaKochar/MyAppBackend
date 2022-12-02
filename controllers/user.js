@@ -1,6 +1,9 @@
 var express = require('express')
 let bodyParser = require('body-parser');
 var UserModel = require('../models/UserModel');
+var CartModel = require('../models/CartModel');
+var OrderModel = require('../models/OrderModel');
+
 var Mailer = require('../utilities/Mailer')
 var Encryption = require('../utilities/Encryption')
 var jwt = require('jsonwebtoken');
@@ -10,7 +13,7 @@ var app = express();
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
-exports.addDetails = function(req,res){
+exports.addDetails = async function(req,res){
    
     UserModel.findOne({email: req.body.email}).then(emailcheck => {
         console.log(req.body.verification)
@@ -38,6 +41,17 @@ exports.addDetails = function(req,res){
                 data: data
              });
         })
+        
+        CartModel.create(
+            {
+                email:req.body.email
+            }
+        )
+        OrderModel.create(
+            {
+                email:req.body.email
+            }
+        )
         }
     })
 };
@@ -100,7 +114,7 @@ exports.loginDetails = function(req,res){
 
 exports.profileDisplay= function (req,res) {
     UserModel.findOne({email: req.params.email}).then(data => {
-        console.log(req.params,data)
+        console.log(req.params)
         if(data){
             res.json({
                 status:200,

@@ -7,6 +7,7 @@ const mongo = require('mongoose');
         address: String,
         password: String,
         //confirmpassword: String,
+        wallet: Number,
         verification: Boolean
     });
     

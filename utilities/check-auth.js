@@ -9,7 +9,8 @@ module.exports = (req,res,next)=>{
         const verify = jwt.verify(token,'secret')
         console.log(verify);
         next()
-    } catch (error) {
+    } 
+    catch (error) {
         console.log(error)
         return res.status(401).json({
             msg:'invalid token'

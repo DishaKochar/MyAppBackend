@@ -37,7 +37,7 @@ exports.addBook = function(req,res){
 
 exports.getBooks = function(req,res){
     BookModel.find({}).then(data => {
-        console.log(data)
+        //console.log(data)
         res.json(data)
     })
 

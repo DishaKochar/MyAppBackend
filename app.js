@@ -3,6 +3,8 @@ var express = require('express')
 //var LoginController = require('./controllers/LoginController');
 var user = require('./routers/user')
 var book = require('./routers/book')
+var cart = require('./routers/cart')
+
 
 
 let bodyParser = require('body-parser');
@@ -28,6 +30,7 @@ mongo.connection.on('open',function(){
 // RegisterController(app);
 user(app)
 book(app)
+cart(app)
 
 
 app.listen(3000,function(){
