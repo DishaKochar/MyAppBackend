@@ -24,7 +24,7 @@ const url = 'mongodb+srv://disha:12345@todolistcluster.y8wxqsx.mongodb.net/MyApp
 mongo.connect(url)
 
 mongo.connection.on('open',function(){
-    console.log('connected')
+    console.log(' db connected')
 })
 
 
