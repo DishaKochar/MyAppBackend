@@ -6,11 +6,9 @@ const mongo = require('mongoose');
         email: String,
         address: String,
         password: String,
-        //confirmpassword: String,
         wallet: Number,
         verification: Boolean
     });
     
-    //var User = mongo.model('user',userSchema);
 
 module.exports = mongo.model('user',userSchema);

@@ -1,10 +1,9 @@
-var express = require('express')
-const checkAuth = require('../utilities/check-auth')
-// const router = express.Router()
+const express = require('express');
+const checkAuth = require('../utilities/check-auth');
 
-var cart = require('../controllers/cart');
+const cart = require('../controllers/cart');
 
-let app = express();
+const app = express();
 
 module.exports = function(app){
     

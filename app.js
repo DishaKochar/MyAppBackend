@@ -1,18 +1,16 @@
-var express = require('express')
-//var RegisterController = require('./controllers/RegisterController');
-//var LoginController = require('./controllers/LoginController');
-var user = require('./routers/user')
-var book = require('./routers/book')
-var cart = require('./routers/cart')
+const express = require('express')
+const user = require('./routers/user')
+const book = require('./routers/book')
+const cart = require('./routers/cart')
 
 
 
-let bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 const mongo = require('mongoose');
-let cors =  require('cors');
+const cors =  require('cors');
 
 
-var app = express();
+const app = express();
 
 app.use(cors())
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -24,18 +22,16 @@ const url = 'mongodb+srv://disha:12345@todolistcluster.y8wxqsx.mongodb.net/MyApp
 mongo.connect(url)
 
 mongo.connection.on('open',function(){
-    console.log(' db connected')
+    console.log(' db connected');
 })
 
 
-// LoginController(app);
-// RegisterController(app);
-user(app)
-book(app)
-cart(app)
+user(app);
+book(app);
+cart(app);
 
 
 app.listen(3000,function(){
-    console.log('server started')
-})
+    console.log('server started');
+});
 
